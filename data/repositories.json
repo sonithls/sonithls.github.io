@@ -1,0 +1,26 @@
+[
+  {
+    "name": "HFOSC-Spectroscopic-Pipeline",
+    "description": "A semi-automatic pipeline for HFOSC spectroscopic data reduction, using IRAF and PyRAF for calibration and extraction.",
+    "language": "Python",
+    "language_class": "python",
+    "category": "Research software",
+    "url": "https://github.com/sonithls/HFOSC-Spectroscopic-Pipeline"
+  },
+  {
+    "name": "GaiaCurves",
+    "description": "A Python package for retrieving variable-star light curves from Gaia DR1 and DR2 using SIMBAD-resolvable star names, with support for multiple targets.",
+    "language": "Jupyter Notebook",
+    "language_class": "notebook",
+    "category": "Research software",
+    "url": "https://github.com/sonithls/GaiaCurves"
+  },
+  {
+    "name": "Python_tutorials_for_Astronomy",
+    "description": "Python tutorials for astronomy and astrophysics, presented as Jupyter notebooks.",
+    "language": "Jupyter Notebook",
+    "language_class": "notebook",
+    "category": "Learning resources",
+    "url": "https://github.com/sonithls/Python_tutorials_for_Astronomy"
+  }
+]

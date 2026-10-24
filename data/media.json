@@ -1,0 +1,55 @@
+[
+  {
+    "date": "2025-10-01",
+    "section": "research",
+    "category": "Research highlight",
+    "source": "Indian Institute of Astrophysics",
+    "title": "The 2021 hot-type symbiotic outburst of YY Herculis: An optical follow-up study",
+    "summary": "IIA highlighted our optical follow-up of the 2021 outburst of YY Herculis. Observations with the Himalayan Chandra Telescope traced its spectral evolution from 2021 to 2023 and explored how the inferred properties of the hot component vary with orbital phase.",
+    "url": "https://www.iiap.res.in/articles/research-highlights/title-the-2021-hot-type-symbiotic-outburst-of-yy-herculis-an-optical-follow-up-study-2di0e/",
+    "link_label": "Read the IIA highlight",
+    "figure": "assets/yy-herculis-figure.jpg",
+    "figure_alt": "Research figure from the YY Herculis optical follow-up study",
+    "figure_caption": "YY Herculis study figure. Source: Indian Institute of Astrophysics research highlight."
+  },
+  {
+    "date": "2023-12-11",
+    "section": "research",
+    "category": "In the press",
+    "source": "Phys.org",
+    "title": "TCP J1822 is a symbiotic star, observations find",
+    "summary": "Phys.org featured our work on TCP J18224935−2408280. Using optical spectra from the Himalayan Chandra Telescope, we confirmed the system’s symbiotic nature and traced its evolution during outburst.",
+    "url": "https://phys.org/news/2023-12-tcp-j1822-symbiotic-star.html",
+    "link_label": "Read the story on Phys.org",
+    "figure": "assets/tcp-j1822-figure.jpg",
+    "figure_alt": "Light curve of TCP J1822",
+    "figure_caption": "Light curve of TCP J1822. Credit: Monthly Notices of the Royal Astronomical Society (2023), DOI: 10.1093/mnras/stad3121. Source: Phys.org.",
+    "display_priority": 2
+  },
+  {
+    "date": "2022-10-29",
+    "section": "outreach",
+    "category": "Panel discussion · Malayalam",
+    "source": "IIA Bengaluru · ATSIL-9",
+    "title": "Careers in astronomy (in Malayalam)",
+    "summary": "I joined fellow IIA researchers for a panel discussion and Q&A on education and career paths in astronomy in India, as part of the IIA Talk Series in Indian Languages.",
+    "url": "https://www.youtube.com/watch?v=uO4m3mkryEc",
+    "link_label": "Watch the discussion on YouTube",
+    "thumbnail": "assets/astronomy-careers.jpg"
+  },
+  {
+    "date": "2026-06-22",
+    "date_label": "22–27 Jun 2026",
+    "section": "outreach",
+    "category": "Workshop · Teaching",
+    "source": "Raman Research Institute, Bengaluru",
+    "title": "Code/Astro 2026 local hub",
+    "summary": "I served as a local organiser, liaison, and teaching assistant at the Code/Astro 2026 local hub at Raman Research Institute, Bengaluru, during 22–27 June 2026.",
+    "url": "https://semaphorep.github.io/codeastro/",
+    "link_label": "Visit the Code/Astro website",
+    "display_priority": 1,
+    "figure": "assets/codeastro-rri.jpg",
+    "figure_alt": "Group photo at the Code/Astro 2026 local hub at Raman Research Institute, Bengaluru",
+    "figure_caption": "Code/Astro 2026 local hub, Raman Research Institute, Bengaluru."
+  }
+]

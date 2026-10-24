@@ -1,0 +1,11 @@
+    <header class="page-heading"><h1>Publications</h1><p>Journal articles, manuscripts, conference contributions, and observing reports.</p></header>
+    <div class="publication-overview"><p><strong>{{JOURNAL_COUNT}}</strong> journal articles <span>·</span> <strong>{{PROGRESS_COUNT}}</strong> manuscripts in progress</p><a href="https://orcid.org/0000-0002-2033-3051" target="_blank" rel="noopener noreferrer">ORCID profile</a></div>
+    <form class="publication-controls" role="search" aria-label="Search publications" hidden>
+      <div class="search-field"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="publication-search">Search by title, author, journal, or keyword</label><input id="publication-search" type="search" placeholder="Search publications…" autocomplete="off"></div>
+      <label class="year-filter"><span class="sr-only">Filter by year</span><select id="publication-year"><option value="all">All years</option>{{YEARS}}</select></label>
+    </form>
+    <div class="filter-row" hidden><div class="filter-buttons" role="group" aria-label="Publication type"><button type="button" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="journal" aria-pressed="false">Journal articles</button><button type="button" data-filter="progress" aria-pressed="false">In progress</button><button type="button" data-filter="conference" aria-pressed="false">Conferences</button><button type="button" data-filter="telegram" aria-pressed="false">ATels</button></div><p id="publication-count" role="status" aria-live="polite" aria-atomic="true"></p></div>
+    <noscript><p class="notice">All publications are listed below. Enable JavaScript to search and filter them.</p></noscript>
+    <div id="publication-list">{{PUBLICATIONS}}</div>
+    <div id="no-results" class="empty-state" hidden><h2>No matching publications</h2><p>Try another keyword, year, or publication type.</p><button type="button" class="button" id="reset-filters">Clear filters</button></div>
+    <p class="publication-note">Publication and manuscript statuses follow my academic CV.</p>
