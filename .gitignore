@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Private source photos (also matches the current folder with a trailing space)
+/internal_dont_commit*/
+
+# Local credentials and agent settings
+/.aws/
+/.codex/
+/.agents/
+.env.*
