@@ -42,7 +42,7 @@ python3 scripts/build.py
 - Colors, typography, and responsive/print layouts: `styles.css`.
 - Search and mobile navigation: `script.js`.
 - Portrait: `assets/sonith.jpg`.
-- Site background: `assets/telescope-background.jpg` (metadata stripped).
+- Site background: `assets/telescope-background.jpg` (original JPEG, metadata stripped).
 - CV PDF: `Sonith_Academic_CV.pdf` (linked from the homepage, bio, and CV page; update template links if renamed).
 
 The builder uses only Python’s standard library. It renders all eight pages, escapes JSON content, validates external data URLs, and sorts publications/media by date. Commit changed sources **and the generated root HTML files** when publishing.
