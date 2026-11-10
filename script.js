@@ -1,7 +1,20 @@
 'use strict';
 document.documentElement.classList.add('js');
 
-// Reveal the background only after the photograph has loaded and decoded.
+// Fade on the first visit in this tab and on reload, but not between pages.
+let fadeBackground = true;
+try {
+  const navigationType = performance.getEntriesByType('navigation')[0]?.type;
+  fadeBackground = navigationType === 'reload'
+    || sessionStorage.getItem('background-loaded') !== 'true';
+} catch {
+  // Keep the loading fade when session storage is unavailable.
+}
+if (!fadeBackground) {
+  document.body.classList.add('background-ready', 'background-instant');
+}
+
+// Reveal the first background only after the photograph has loaded and decoded.
 const backgroundImage = new Image();
 backgroundImage.onload = async () => {
   try {
@@ -9,6 +22,12 @@ backgroundImage.onload = async () => {
   } catch {
     // A loaded image can still be displayed if decoding is unsupported or fails.
   }
+  try {
+    sessionStorage.setItem('background-loaded', 'true');
+  } catch {
+    // The background still works when session storage is unavailable.
+  }
+  if (!fadeBackground) return;
   requestAnimationFrame(() => {
     requestAnimationFrame(() => document.body.classList.add('background-ready'));
   });

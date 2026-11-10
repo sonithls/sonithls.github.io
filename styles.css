@@ -24,6 +24,7 @@ body::before {
     url('assets/telescope-background.jpg') center center / cover no-repeat;
 }
 body.background-ready::before { opacity: 1; }
+body.background-instant::before { transition: none; }
 @media (prefers-reduced-motion: reduce) {
   body::before { transition: none; }
 }
