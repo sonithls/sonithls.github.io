@@ -1,6 +1,20 @@
 'use strict';
 document.documentElement.classList.add('js');
 
+// Reveal the background only after the photograph has loaded and decoded.
+const backgroundImage = new Image();
+backgroundImage.onload = async () => {
+  try {
+    await backgroundImage.decode();
+  } catch {
+    // A loaded image can still be displayed if decoding is unsupported or fails.
+  }
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => document.body.classList.add('background-ready'));
+  });
+};
+backgroundImage.src = 'assets/telescope-background.jpg';
+
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 function closeMenu() {

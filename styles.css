@@ -18,8 +18,14 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
   background: linear-gradient(rgb(250 250 250 / 74%), rgb(250 250 250 / 82%)),
     url('assets/telescope-background.jpg') center center / cover no-repeat;
+}
+body.background-ready::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  body::before { transition: none; }
 }
 body { isolation: isolate; }
 a { color: var(--accent); text-decoration: none; text-underline-offset: 4px; }
