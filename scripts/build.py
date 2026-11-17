@@ -13,10 +13,11 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
+SITE_URL = "https://sonithls.github.io/"
 PAGES = {
     "index": ("Home", "Sonith L. S., PhD candidate at the Indian Institute of Astrophysics, Bengaluru, awaiting thesis defence and studying classical symbiotic outbursts and interacting binaries."),
     "bio": ("Bio", "Sonith L. S.: biography, education, astronomy outreach, and scientific community service."),
-    "research": ("Research", "Research on symbiotic stars, interacting binaries, stellar outbursts, and multi-wavelength observations."),
+    "research": ("Research", "Sonith L. S.’s research on symbiotic stars, interacting binaries, novae, optical spectroscopy, and multi-wavelength observations."),
     "publications": ("Publications", "Search Sonith L. S.’s journal articles, manuscripts, conference contributions, and Astronomer’s Telegrams."),
     "media": ("Media & Outreach", "Research coverage and astronomy outreach by Sonith L. S.: TCP J1822, YY Herculis, and public discussions in Malayalam."),
     "repositories": ("Repositories", "Astronomy research software and Python resources by Sonith L. S."),
@@ -92,6 +93,31 @@ def render(template, values):
     return re.sub(r"\{\{([A-Z_]+)\}\}", substitute, template)
 
 
+def structured_data(slug, title, description):
+    url = SITE_URL if slug == "index" else f"{SITE_URL}{slug}.html"
+    graph = [{
+        "@type": "WebPage", "@id": url + "#webpage", "url": url,
+        "name": title, "description": description,
+        "isPartOf": {"@id": SITE_URL + "#website"},
+        "about": {"@id": SITE_URL + "#person"},
+    }]
+    if slug == "index":
+        graph.extend([{
+            "@type": "WebSite", "@id": SITE_URL + "#website",
+            "url": SITE_URL, "name": "Sonith L. S.",
+            "alternateName": ["Sonith L S", "sonithls.github.io"],
+            "publisher": {"@id": SITE_URL + "#person"},
+        }, {
+            "@type": "Person", "@id": SITE_URL + "#person",
+            "name": "Sonith L. S.", "alternateName": "Sonith L S",
+            "url": SITE_URL, "image": SITE_URL + "assets/sonith.jpg",
+            "description": description,
+            "affiliation": {"@type": "Organization", "name": "Indian Institute of Astrophysics", "url": "https://www.iiap.res.in/"},
+            "sameAs": ["https://orcid.org/0000-0002-2033-3051", "https://github.com/sonithls"],
+        }])
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False).replace("<", "\\u003c")
+
+
 def main():
     def load(name):
         return json.loads((ROOT / f"data/{name}.json").read_text(encoding="utf-8"))
@@ -123,8 +149,10 @@ def main():
             active = ' aria-current="page"' if other == slug else ""
             nav.append(f'<a href="{other}.html"{active}>{text(nav_label)}</a>')
         content = render((ROOT / f"templates/pages/{slug}.html").read_text(encoding="utf-8"), shared)
+        title = "Sonith L. S. | Observational Astrophysicist" if slug == "index" else f"{label} | Sonith L. S."
         outputs[slug] = render(base, {
-            "TITLE": "Sonith L. S. | Observational Astrophysicist" if slug == "index" else text(f"{label} | Sonith L. S."),
+            "TITLE": text(title),
+            "STRUCTURED_DATA": structured_data(slug, title, description),
             "DESCRIPTION": text(description),
             "CANONICAL": "" if slug == "index" else f"{slug}.html",
             "BODY_CLASS": "home-page" if slug == "index" else "inner-page",
@@ -134,6 +162,11 @@ def main():
         })
     for slug, html in outputs.items():
         (ROOT / f"{slug}.html").write_text(html, encoding="utf-8")
+    urls = [SITE_URL if slug == "index" else f"{SITE_URL}{slug}.html" for slug in PAGES]
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += "".join(f"  <url><loc>{escape(url)}</loc></url>\n" for url in urls)
+    (ROOT / "sitemap.xml").write_text(sitemap + "</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
     # Preserve the old news URL, including for visitors with JavaScript disabled.
     (ROOT / "news.html").write_text('''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Media &amp; Outreach | Sonith L. S.</title><meta http-equiv="refresh" content="0; url=media.html"><link rel="canonical" href="https://sonithls.github.io/media.html"></head><body><p>This page has moved to <a href="media.html">Media &amp; Outreach</a>.</p></body></html>

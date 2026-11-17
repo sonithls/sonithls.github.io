@@ -79,3 +79,10 @@ Edit `data/repositories.json`. Each card has `name`, `description`, `language`, 
 Publish the generated HTML files, `styles.css`, `script.js`, `assets/`, `.nojekyll`, and the PDF to the branch configured in **Settings → Pages**, using **Deploy from a branch → /(root)**. The source templates and JSON can stay in the same repository for future edits. No server or build pipeline is required on GitHub. The old `news.html` URL redirects to `media.html`; include it when publishing.
 
 The existing Google verification file is preserved. Building locally does not commit, push, publish, or change repository settings.
+
+## Search visibility
+
+The build generates `sitemap.xml`, which lists the eight canonical page URLs,
+and `robots.txt`, which points to the sitemap. Include both files when publishing
+and regenerate them whenever the site's pages change.
+
